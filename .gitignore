@@ -1,0 +1,50 @@
+# ---- 依赖 ----
+node_modules/
+.pnp
+.pnp.*
+
+# ---- 独立前端构建产物 ----
+frontend/dist/
+server/src/main/resources/static/
+frontend/.vite/
+
+# ---- Maven / 后端 ----
+server/target/
+server/data/
+data/
+*.class
+
+# ---- IDE / 系统 ----
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# ---- 环境与密钥 ----
+.env
+.env.*
+!.env.example
+
+# ---- 项目私有开发环境 ----
+.runtime/
+
+# ---- 日志与缓存 ----
+*.log
+*.tsbuildinfo
+
+# ---- 临时截图、评测输出与验证产物 ----
+artifacts/
+
+# ---- This repository publishes the program, not private AI context or archived materials ----
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+MEMORY.md
+.codex/
+.claude/
+.agents/
+.cursor/
+docs/
+tools/knowledge/
+tools/evaluation/

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "node": {
+    "version": "24.18.0",
+    "executable": "node.exe",
+    "hashAlgorithm": "SHA256",
+    "archives": {
+      "x64": {
+        "filename": "node-v24.18.0-win-x64.zip",
+        "root": "node-v24.18.0-win-x64",
+        "urls": ["https://nodejs.org/dist/v24.18.0/node-v24.18.0-win-x64.zip"],
+        "checksum": "0ae68406b42d7725661da979b1403ec9926da205c6770827f33aac9d8f26e821"
+      },
+      "arm64": {
+        "filename": "node-v24.18.0-win-arm64.zip",
+        "root": "node-v24.18.0-win-arm64",
+        "urls": ["https://nodejs.org/dist/v24.18.0/node-v24.18.0-win-arm64.zip"],
+        "checksum": "f274669adb93b1fd0fbf8f21fd078609e9dcc84333d4f2718d2dde3f9a161a01"
+      }
+    }
+  },
+  "jdk": {
+    "version": "21.0.12.1+1",
+    "executable": "bin/java.exe",
+    "hashAlgorithm": "SHA256",
+    "archives": {
+      "x64": {
+        "filename": "OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+        "root": "jdk-21.0.12.1+1",
+        "urls": ["https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip"],
+        "checksum": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e"
+      },
+      "arm64": {
+        "filename": "OpenJDK21U-jdk_aarch64_windows_hotspot_21.0.12.1_1.zip",
+        "root": "jdk-21.0.12.1+1",
+        "urls": ["https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_aarch64_windows_hotspot_21.0.12.1_1.zip"],
+        "checksum": "ccf2e51f527d542a70ba5794a600d3aac04b4e967950e227834c7566cb1bec7b"
+      }
+    }
+  },
+  "maven": {
+    "version": "3.9.16",
+    "executable": "bin/mvn.cmd",
+    "hashAlgorithm": "SHA512",
+    "archives": {
+      "any": {
+        "filename": "apache-maven-3.9.16-bin.zip",
+        "root": "apache-maven-3.9.16",
+        "urls": [
+          "https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.zip",
+          "https://archive.apache.org/dist/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.zip"
+        ],
+        "checksum": "ed41650d42485cfc243fad22158caf9cbb5dc408ce7a09ddb94dd42a019de929ca43065bfa450612cf12bf78b5cafa3884b96c090de326ff590448c933454af3"
+      }
+    }
+  }
+}

@@ -1,0 +1,239 @@
+.nx-clarify-question {
+  border: 0;
+  min-width: 0;
+  padding: 16px 0;
+  margin: 0;
+}
+.nx-clarify-question + .nx-clarify-question {
+  border-top: 1px solid #dce6d5;
+}
+.nx-clarify-question legend {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.7;
+  padding: 0;
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.nx-clarify-question > .nx-muted {
+  clear: both;
+  font-size: 0.8125rem;
+  margin-bottom: 10px;
+}
+.nx-clarify-question .nx-clarify-options {
+  clear: both;
+}
+.nx-clarify-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.875rem;
+  padding: 9px 12px;
+  border: 1px solid #d2dfc4;
+  border-radius: 6px;
+  background: #fff;
+  color: #466037;
+  cursor: pointer;
+  line-height: 1.6;
+}
+.nx-clarify-option:hover {
+  background: #eaf3e0;
+}
+.nx-clarify-option.is-selected {
+  color: #294b29;
+  background: #dfedcd;
+  border-color: #83a761;
+  box-shadow: inset 0 0 0 1px #83a761;
+}
+.nx-clarify-option input {
+  accent-color: #416731;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin: 0;
+}
+.nx-clarify-option:focus-within {
+  outline: 2px solid #679548;
+  outline-offset: 2px;
+}
+.nx-clarify-question:disabled .nx-clarify-option {
+  cursor: default;
+}
+.nx-clarify-custom {
+  margin-top: 12px;
+  color: #647a52;
+  font-size: 0.8125rem;
+}
+.nx-clarify-custom summary {
+  cursor: pointer;
+  width: fit-content;
+}
+.nx-clarify-custom textarea {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+  padding: 10px;
+  border: 1px solid #cbdcc0;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  resize: vertical;
+}
+.nx-clarify-custom textarea:focus-visible {
+  outline: 2px solid #679548;
+  outline-offset: 2px;
+}
+.nx-clarify-answer {
+  font-size: 0.8125rem;
+  color: #496239;
+  line-height: 1.75;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.nx-clarify-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  border-top: 1px solid #dce6d5;
+  padding-top: 14px;
+  margin-top: 3px;
+}
+.nx-clarify-footer p {
+  font-size: 0.8125rem;
+  color: #60734f;
+  line-height: 1.7;
+}
+.nx-clarify-footer .nx-button {
+  font-size: 0.875rem;
+  min-height: 40px;
+}
+/* Keep instructional text readable on the pale workspace surfaces. */
+.nx-history-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  border-radius: 6px;
+  margin-bottom: 4px;
+}
+.nx-history-row:hover,
+.nx-history-row.is-active {
+  background: #24342a;
+}
+.nx-history-row > button {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 6px 9px 10px;
+  text-align: left;
+  border: 0;
+  background: none;
+  color: #b9c8bd;
+  font-size: 0.875rem;
+}
+.nx-history-row > button > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nx-history-row > button > svg {
+  flex-shrink: 0;
+}
+.nx-history-row.is-active > button {
+  color: #e4f2cb;
+}
+.nx-history-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1px;
+  padding-right: 3px;
+}
+.nx-history-actions > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 36px;
+  padding: 0;
+  color: #a5b7a9;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+}
+.nx-history-actions > button:hover {
+  color: #eff9e6;
+  background: #395040;
+}
+.nx-weather-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 9px;
+  color: #63755f;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.nx-weather-consent input {
+  accent-color: #416731;
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.nx-message-context {
+  font-size: 0.8125rem;
+  color: #5f7358;
+  margin-top: 9px;
+}
+.nx-message-context summary {
+  cursor: pointer;
+}
+.nx-message-context p {
+  margin-top: 7px;
+}
+.nx-interrupted {
+  margin-top: 12px;
+  border-left: 2px solid #b08b4e;
+  padding-left: 10px;
+  font-size: 0.875rem;
+  color: #8c6335;
+}
+/* Partially completed answers keep usable tool cards, so they read as a caution rather than a failure. */
+.nx-degraded {
+  margin-top: 12px;
+  border-left: 2px solid #7a9a5c;
+  padding-left: 10px;
+  font-size: 0.875rem;
+  color: #4f6b3c;
+}
+.nx-streaming .nx-message-content {
+  border-left: 2px solid #b3cf94;
+  padding-left: 12px;
+}
+.nx-thinking {
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+}
+.nx-thinking button {
+  font-size: 0.875rem;
+  padding: 5px;
+}
+.nx-button.is-danger {
+  color: #9b392d;
+  border-color: #e6c3bc;
+  background: #fff3ef;
+}
+.nx-button.is-danger:hover {
+  background: #fce6df;
+}
+.nx-message-content {
+  font-size: 1rem;
+}

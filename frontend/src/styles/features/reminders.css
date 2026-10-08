@@ -1,0 +1,52 @@
+.nx-task-reminder {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--line, #d9dfd4);
+  border-radius: 12px;
+  background: var(--paper, #f8f8f2);
+  font-size: 0.85rem;
+}
+.nx-reminder-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.nx-reminder-heading label,
+.nx-reminder-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.nx-task-reminder p {
+  margin: 0.6rem 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.nx-reminder-fields {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.8rem;
+}
+.nx-reminder-fields input[type='datetime-local'] {
+  min-width: 0;
+  width: 100%;
+}
+.nx-task-reminder input[type='checkbox'] {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+}
+.nx-reminder-fields button {
+  justify-self: start;
+}
+.nx-task-schedule-summary {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: #f3f6ef;
+  overflow-wrap: anywhere;
+}
+.nx-task-schedule-summary p {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}

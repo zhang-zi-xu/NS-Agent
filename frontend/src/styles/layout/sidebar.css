@@ -1,0 +1,193 @@
+.nx-shell {
+  height: 100dvh;
+  min-height: 520px;
+  display: flex;
+  overflow: hidden;
+}
+/* 宽度由 --nx-sidebar-width 决定（用户拖动后记住）；窄屏抽屉下面会用固定宽度覆盖 */
+.nx-sidebar {
+  width: var(--nx-sidebar-width, 230px);
+  flex: 0 0 var(--nx-sidebar-width, 230px);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px 0;
+  background: var(--ink);
+  color: #dce4dd;
+  overflow-y: auto;
+  z-index: 20;
+}
+.nx-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin: 0 5px 30px;
+  flex-shrink: 0;
+}
+.nx-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--lime);
+  flex-shrink: 0;
+}
+.nx-brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.4);
+}
+.nx-brand-mark.is-small {
+  width: 33px;
+  height: 33px;
+  border-radius: 9px;
+}
+.nx-brand strong {
+  font-size: 23px;
+  font-weight: 650;
+  letter-spacing: 1px;
+  color: #f5f7f5;
+}
+.nx-brand i {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #b6c5b9;
+}
+.nx-brand small {
+  display: block;
+  font-size: 11.5px;
+  letter-spacing: 1.2px;
+  margin-top: 4px;
+  color: #8eaa96;
+}
+.nx-new-chat {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 42px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--lime);
+  color: #213123;
+  font-weight: 600;
+  margin-bottom: 26px;
+}
+.nx-new-chat:hover {
+  background: #dbf3b1;
+}
+/* 右侧的"去看看"箭头用图标而不是文字符号，和左侧 + 号保持同一套笔画 */
+.nx-new-chat-go {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  color: #3c5a24;
+  transition: transform 0.16s ease;
+}
+.nx-new-chat:hover:not(:disabled) .nx-new-chat-go {
+  transform: translate(2px, -2px);
+}
+.nx-nav-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 13px;
+  color: #a0b0a4;
+  font-size: 11.5px;
+  letter-spacing: 1.5px;
+  margin-bottom: 11px;
+}
+.nx-sidebar nav {
+  display: grid;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.nx-sidebar > .nx-nav-label,
+.nx-sidebar > .nx-new-chat {
+  flex-shrink: 0;
+}
+.nx-sidebar nav button {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 43px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #b3c0b6;
+  text-align: left;
+  font-size: 13px;
+}
+.nx-sidebar nav button:hover {
+  background: #24322a;
+  color: #f5f7f5;
+}
+.nx-sidebar nav button.is-active {
+  color: var(--lime);
+  background: #2b3c2d;
+}
+.nx-sidebar nav button b {
+  margin-left: auto;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 2px 6px;
+  background: #415940;
+  border-radius: 4px;
+}
+.nx-history {
+  display: flex;
+  flex-direction: column;
+  min-height: 128px;
+  min-width: 0;
+  flex: 1 1 160px;
+  padding-top: 24px;
+  margin-bottom: 18px;
+}
+.nx-history > .nx-nav-label {
+  flex-shrink: 0;
+}
+.nx-history-list {
+  min-height: 0;
+  min-width: 0;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #506454 transparent;
+}
+.nx-history-list > p {
+  padding: 7px 13px;
+  font-size: 12px;
+  color: #8b9c90;
+}
+.nx-sidebar-bottom {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 15px 4px 17px;
+  color: #98aa9d;
+  font-size: 11.5px;
+  flex-shrink: 0;
+}
+.nx-sidebar-bottom > span:last-child {
+  margin-left: auto;
+  color: #7c9082;
+}
+.nx-connection-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #be9865;
+}
+.nx-connection-dot.is-online {
+  background: #a2cc79;
+}

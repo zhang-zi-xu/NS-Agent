@@ -1,0 +1,421 @@
+/* ---- 统一下拉选择器（自绘弹层，替代原生 select 的系统菜单）---- */
+.nx-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  max-width: 330px;
+  padding: 0 10px;
+  border: 1px solid #dfe7db;
+  border-radius: 7px;
+  background: #fff;
+  color: #3f5a43;
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    box-shadow 0.15s;
+}
+.nx-select-trigger:hover:not(:disabled) {
+  border-color: #a9bd9c;
+  background: #f8fbf5;
+}
+.nx-select-trigger[data-popup-open] {
+  border-color: #7d9c56;
+  box-shadow: 0 0 0 3px #e4efd7;
+}
+.nx-select-trigger:focus-visible {
+  outline: 2px solid #7d9c56;
+  outline-offset: 1px;
+}
+.nx-select-trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.nx-select-leading {
+  display: inline-flex;
+  color: #7d9c56;
+  flex-shrink: 0;
+}
+.nx-select-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+  overflow: hidden;
+}
+.nx-select-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nx-select-hint {
+  color: #93a184;
+  font-size: 12px;
+  font-style: normal;
+  flex-shrink: 0;
+}
+/* 田块名与作物之间沿用旧版的分隔点，避免两个词读成一句话 */
+.nx-select-hint::before {
+  content: '·';
+  margin-right: 5px;
+  color: #c3d0b9;
+}
+.nx-select-placeholder {
+  color: #9aa896;
+}
+.nx-select-icon {
+  display: inline-flex;
+  color: #8ba07c;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.nx-select-icon svg {
+  transition: transform 0.16s ease;
+}
+.nx-select-trigger[data-popup-open] .nx-select-icon {
+  color: #5e8042;
+}
+.nx-select-trigger[data-popup-open] .nx-select-icon svg {
+  transform: rotate(180deg);
+}
+.nx-select-positioner {
+  z-index: 70;
+}
+.nx-select-popup {
+  min-width: var(--anchor-width, 200px);
+  max-width: 360px;
+  max-height: min(340px, 60vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #dbe5d1;
+  border-radius: 10px;
+  box-shadow: 0 14px 34px #1d2b1d21;
+  transform-origin: top center;
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease;
+}
+.nx-select-popup[data-side='top'] {
+  transform-origin: bottom center;
+}
+.nx-select-popup[data-starting-style],
+.nx-select-popup[data-ending-style] {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.985);
+}
+.nx-select-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: #3f5a43;
+  cursor: pointer;
+}
+.nx-select-item[data-highlighted] {
+  background: #eef4e7;
+}
+.nx-select-item[data-selected] {
+  color: #2f5a33;
+  font-weight: 600;
+  background: #f4f8ee;
+}
+.nx-select-item[data-highlighted][data-selected] {
+  background: #e6f0db;
+}
+.nx-select-item[data-disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.nx-select-indicator {
+  display: inline-flex;
+  width: 14px;
+  flex-shrink: 0;
+  color: #5e8042;
+}
+.nx-select-item-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nx-select-item-hint {
+  margin-left: auto;
+  padding-left: 10px;
+  color: #93a184;
+  font-size: 12px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.nx-select-empty {
+  padding: 10px;
+  color: #93a184;
+  font-size: 12px;
+}
+.nx-select-footer {
+  border-top: 1px solid #eef2e8;
+  margin-top: 4px;
+  padding: 5px 4px 1px;
+}
+.nx-select-footer button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: #4c7040;
+  font-size: 11.5px;
+  text-align: left;
+}
+.nx-select-footer button:hover {
+  background: #f1f6ea;
+}
+/* 会话栏里的田块选择器：与工具条按钮同一视觉族 */
+.nx-field-select {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+.nx-field-select .nx-select-trigger {
+  border-color: #e3ebdd;
+  background: #fbfdf9;
+}
+.nx-field-select .nx-select-trigger:hover:not(:disabled) {
+  background: #f4f9ef;
+}
+/* 工具条里的筛选下拉：与卡片/搜索框同一尺寸感 */
+.nx-filter-trigger {
+  min-height: 37px;
+  padding: 0 11px;
+  font-size: 11.5px;
+}
+/* ---- 最近对话：按田块分组 ---- */
+.nx-history-group + .nx-history-group {
+  margin-top: 9px;
+}
+.nx-history-group-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  padding: 5px 8px 5px 6px;
+  border: 0;
+  border-radius: 5px;
+  background: none;
+  color: #93a696;
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+  text-align: left;
+}
+.nx-history-group-head:hover {
+  background: #22312a;
+  color: #c3d3c6;
+}
+.nx-history-group-head > svg {
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+.nx-history-group-head > svg.is-collapsed {
+  transform: rotate(-90deg);
+}
+.nx-history-group-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #b9cbbd;
+}
+.nx-history-group-hint {
+  flex-shrink: 0;
+  color: #7f9486;
+}
+.nx-history-group-hint::before {
+  content: '·';
+  margin-right: 4px;
+  color: #5f7365;
+}
+.nx-history-group-head b {
+  margin-left: auto;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #2b3c2d;
+  color: #a8bda9;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+.nx-history-group-rows {
+  padding-left: 7px;
+  margin-left: 4px;
+  border-left: 1px solid #2c3d31;
+}
+.nx-chat-error,
+.nx-chat-error button {
+  font-size: 0.875rem;
+}
+.nx-muted,
+.nx-knowledge-excerpt,
+.nx-task-condition,
+.nx-task-note,
+.nx-note,
+.nx-knowledge-detail {
+  color: #68785f;
+}
+.nx-starters > button > span,
+.nx-welcome-heading > p,
+.nx-rail-section > p,
+.nx-workflow small,
+.nx-rail-task p {
+  color: #6c7a62;
+}
+.nx-composer-foot {
+  color: #6d7c66;
+  font-size: 11.5px;
+}
+.nx-composer-hint,
+.nx-form-field input::placeholder,
+.nx-form-field textarea::placeholder {
+  color: #78876d;
+}
+.nx-task-meta,
+.nx-card-footer,
+.nx-field-meta {
+  color: #6d805c;
+}
+.nx-knowledge-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.nx-knowledge-dialog .nx-knowledge-detail {
+  gap: 14px;
+}
+.nx-sources {
+  border: 1px solid #dce6d5;
+  border-radius: 10px;
+  background: #fff;
+  margin-top: 17px;
+  padding: 17px;
+  font-size: 12px;
+}
+.nx-sources header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #3f6130;
+  margin-bottom: 13px;
+}
+.nx-sources header b {
+  font-size: 13px;
+}
+.nx-sources header span {
+  color: #93a286;
+  font-size: 12px;
+  margin-left: auto;
+}
+.nx-sources ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 13px;
+}
+.nx-sources li {
+  border-top: 1px solid #edf2e8;
+  padding-top: 12px;
+}
+.nx-sources li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.nx-source-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.nx-source-head b {
+  font-size: 12px;
+  color: #2f4a33;
+  line-height: 1.6;
+}
+.nx-source-meta {
+  color: #7d8b74;
+  font-size: 11.5px;
+  line-height: 1.7;
+  margin-top: 6px;
+}
+.nx-source-locator {
+  color: #8b938c;
+  font-size: 11.5px;
+  margin-top: 4px;
+}
+.nx-source-excerpt {
+  color: #4a554d;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 7px;
+  background: #f7f9f4;
+  border-left: 2px solid #cfe0bf;
+  padding: 7px 10px;
+}
+.nx-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  color: #476a36;
+  font-size: 11.5px;
+  text-decoration: none;
+}
+.nx-source-link:hover {
+  text-decoration: underline;
+}
+.nx-source-nolink {
+  display: block;
+  margin-top: 8px;
+  color: #a0895c;
+  font-size: 11.5px;
+  line-height: 1.7;
+}
+.nx-source-foot {
+  color: #96a08d;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 12px;
+  border-top: 1px solid #edf2e8;
+  padding-top: 9px;
+}
+.nx-badge.is-verified {
+  background: #e6f2dc;
+  color: #4d7a34;
+}
+.nx-source-fields {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.nx-source-fields > div {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+.nx-source-fields dt {
+  color: #8b938c;
+  width: 64px;
+  flex-shrink: 0;
+}
+.nx-source-fields dd {
+  margin: 0;
+  color: #3c4a41;
+}

@@ -1,0 +1,148 @@
+/* ---- 图片附件：待发送缩略图、拍摄提示、消息内回显 ---- */
+.nx-image-strip {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nx-image-strip li {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #dbe5d1;
+  background: #f2f6ee;
+}
+.nx-image-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.nx-image-strip button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #1d2b1dd9;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nx-image-strip button:hover {
+  background: #8c3b2ad9;
+}
+.nx-image-strip.is-message {
+  margin-bottom: 9px;
+}
+.nx-image-strip.is-message li {
+  width: 82px;
+  height: 82px;
+}
+/* 输入框内：粘贴/选择后的待发送图片显示在文本框上方 */
+.nx-image-strip.is-composer {
+  margin: 0 0 9px;
+}
+.nx-image-strip.is-composer li {
+  width: 64px;
+  height: 64px;
+}
+.nx-composer-tools .nx-image-strip {
+  margin-right: auto;
+}
+.nx-image-guide {
+  flex-basis: 100%;
+  margin-top: 8px;
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: #6d7c66;
+  background: #f3f7ee;
+  border: 1px solid #e2ebd8;
+  border-radius: 7px;
+  padding: 8px 10px;
+}
+.nx-image-guide.is-warning {
+  color: #8a6a2f;
+  background: #fbf7ea;
+  border-color: #e8dfc4;
+}
+.nx-image-guide b {
+  font-weight: 600;
+  color: #4d6b3a;
+}
+/* 渲染崩溃时的兜底页面：宁可给一句人话，也不要白屏 */
+.nx-crash {
+  max-width: 560px;
+  margin: 12vh auto;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid #e0e8dc;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px #18221914;
+  color: #33452f;
+}
+.nx-crash h1 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.nx-crash p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #63755c;
+}
+.nx-crash pre {
+  margin-top: 14px;
+  padding: 11px 13px;
+  background: #f6f8f3;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.nx-crash-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+/* 语音输入：仅浏览器支持时出现（Chromium 系）；识别结果只追加到输入框，可改后再发 */
+.nx-icon-button.is-listening {
+  color: #b25540;
+  background: #fdeeea;
+  animation: nx-pulse 1.4s ease-in-out infinite;
+}
+@keyframes nx-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+.nx-voice-status {
+  min-width: 0;
+  max-width: 34ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #b25540;
+  font-size: 12px;
+}
+.nx-voice-error {
+  flex-basis: 100%;
+  order: 2;
+  margin-top: 6px;
+  color: #8a6a2f;
+  font-size: 12px;
+  line-height: 1.7;
+}

@@ -1,0 +1,18 @@
+/* Import order preserves the original cascade, including final accessibility/responsive overrides. */
+@import './base.css';
+@import './layout/sidebar.css';
+@import './features/weather.css';
+@import './layout/shell.css';
+@import './components/actions.css';
+@import './features/chat-workspace.css';
+@import './components/workspace.css';
+@import './features/knowledge.css';
+@import './components/dialogs.css';
+@import './layout/responsive.css';
+@import './features/chat.css';
+@import './components/select-history.css';
+@import './features/images-voice.css';
+@import './features/channels.css';
+@import './features/tasks-photos.css';
+@import './features/reminders.css';
+@import './overrides.css';

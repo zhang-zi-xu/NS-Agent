@@ -1,0 +1,216 @@
+.nx-dialog[data-slot='dialog-content'] {
+  max-width: min(530px, calc(100vw - 32px));
+  width: 100%;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  background: #fff;
+  padding: 27px;
+  gap: 15px;
+  border: 1px solid #e0e8dc;
+  border-radius: 13px;
+  color: #354d30;
+  box-shadow: 0 22px 90px #18221921;
+}
+.nx-dialog.nx-dialog-wide[data-slot='dialog-content'] {
+  max-width: min(680px, calc(100vw - 32px));
+}
+.nx-dialog.nx-dialog-compact[data-slot='dialog-content'] {
+  max-width: 410px;
+}
+.nx-dialog [data-slot='dialog-title'] {
+  font-family: inherit;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 550;
+  padding-right: 20px;
+}
+.nx-dialog [data-slot='dialog-description'] {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #87977a;
+}
+.nx-dialog [data-slot='dialog-close'] {
+  top: 16px;
+  right: 13px;
+  color: #91a382;
+}
+.nx-form {
+  display: grid;
+  gap: 16px;
+}
+.nx-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6e855a;
+}
+.nx-form-field input,
+.nx-form-field textarea,
+.nx-form-field select {
+  border: 1px solid #dbe5d1;
+  border-radius: 6px;
+  background: #fcfefa;
+  padding: 10px 11px;
+  color: #42652e;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+}
+.nx-form-field textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+.nx-form-field input::placeholder,
+.nx-form-field textarea::placeholder {
+  color: #a1b092;
+}
+.nx-form-field input:disabled {
+  background: #f3f6ef;
+  color: #90a27e;
+}
+.nx-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.nx-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  border-top: 1px solid #e7eddf;
+  padding-top: 17px;
+  margin-top: 4px;
+}
+.nx-settings .nx-dialog-actions {
+  flex-wrap: wrap;
+}
+.nx-secret-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.nx-secret-input > input {
+  padding-right: 40px;
+}
+.nx-secret-input > button {
+  position: absolute;
+  right: 4px;
+}
+.nx-security-note {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f0f5e9;
+  color: #889a73;
+  font-size: 11.5px;
+  line-height: 1.9;
+}
+.nx-security-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #7c965f;
+}
+.nx-error {
+  font-size: 12px;
+  line-height: 1.8;
+  background: #fff2e9;
+  border: 1px solid #efd9c6;
+  color: #a2744a;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+.nx-success {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #648a41;
+  font-size: 12px;
+}
+.nx-field-detail {
+  display: grid;
+  gap: 18px;
+}
+.nx-detail-facts {
+  display: flex;
+  gap: 25px;
+  font-size: 11.5px;
+  color: #91a17f;
+  padding: 13px;
+  background: #f5f8ef;
+  border-radius: 6px;
+}
+.nx-detail-facts strong {
+  font-weight: 500;
+  margin-left: 6px;
+  color: #6e8658;
+}
+.nx-note {
+  font-size: 12px;
+  white-space: pre-wrap;
+  color: #859875;
+  line-height: 1.9;
+}
+.nx-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nx-section-heading h3,
+.nx-knowledge-detail h3 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.nx-inline-empty {
+  padding: 15px;
+  background: #f7f9f3;
+  color: #94a784;
+  font-size: 12px;
+  line-height: 1.8;
+  border-radius: 5px;
+}
+.nx-record-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.nx-record-list li {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #eef3e7;
+}
+.nx-record-list time {
+  color: #98a987;
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+.nx-record-list p {
+  white-space: pre-wrap;
+  color: #758d61;
+  line-height: 1.8;
+}
+.nx-knowledge-detail {
+  display: grid;
+  gap: 22px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #849771;
+}
+.nx-knowledge-detail h3 {
+  color: #526e3e;
+  margin-bottom: 7px;
+}
+.nx-knowledge-detail ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+.nx-knowledge-detail li + li {
+  margin-top: 7px;
+}

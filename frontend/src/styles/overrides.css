@@ -1,0 +1,350 @@
+/* ---- 可读性：这套界面要给农民看，正文不再用 9–12px 的桌面小字 ---- */
+.nx-plan,
+.nx-risk,
+.nx-clarify,
+.nx-sources {
+  font-size: 15px;
+}
+.nx-plan > p,
+.nx-plan-summary {
+  font-size: 15px;
+  line-height: 1.9;
+}
+.nx-plan header b {
+  font-size: 16px;
+}
+.nx-plan header span {
+  font-size: 12px;
+}
+.nx-plan h4 {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.nx-plan li p {
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+.nx-plan li p > b {
+  font-size: 12.5px;
+  color: #6f7f60;
+}
+.nx-plan .nx-plan-source {
+  font-size: 12px;
+  line-height: 1.8;
+}
+.nx-plan footer > span {
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+.nx-plan-index {
+  font-size: 12px;
+}
+.nx-clarify h4,
+.nx-clarify-question legend {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.nx-clarify > p,
+.nx-clarify > div > p,
+.nx-clarify-option {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.nx-clarify-option {
+  padding: 11px 14px;
+}
+.nx-task-title {
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.nx-task-meta {
+  font-size: 12.5px;
+  gap: 14px;
+}
+.nx-task-condition,
+.nx-task-note {
+  font-size: 13.5px;
+  line-height: 1.9;
+}
+.nx-task-evidence {
+  font-size: 12.5px;
+  line-height: 1.9;
+}
+.nx-task-records li {
+  font-size: 13.5px;
+}
+.nx-task-records-toggle {
+  font-size: 13px;
+  padding: 4px 0;
+}
+.nx-task-actions .nx-button {
+  min-height: 36px;
+  font-size: 13px;
+}
+.nx-reminders button {
+  font-size: 13.5px;
+}
+.nx-field-photo-toggle {
+  font-size: 12.5px;
+}
+.nx-source-excerpt {
+  font-size: 13.5px;
+  line-height: 1.9;
+}
+.nx-source-meta,
+.nx-source-nolink {
+  font-size: 12px;
+  line-height: 1.8;
+}
+@media (max-width: 700px) {
+  .nx-plan,
+  .nx-risk,
+  .nx-clarify {
+    font-size: 15px;
+  }
+  .nx-plan h4 {
+    font-size: 15.5px;
+  }
+  .nx-task-actions {
+    gap: 10px;
+  }
+  .nx-task-actions .nx-button {
+    min-height: 40px;
+  }
+}
+/* ---- 侧边栏宽度调节手柄 ---- */
+.nx-resizer {
+  flex: 0 0 6px;
+  align-self: stretch;
+  position: relative;
+  background: transparent;
+  cursor: col-resize;
+  touch-action: none;
+}
+.nx-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: transparent;
+  transition: background 0.15s;
+}
+.nx-resizer:hover::after,
+.nx-resizer:focus-visible::after,
+.nx-resizer.is-active::after {
+  background: #7d9c56;
+}
+.nx-resizer:focus-visible {
+  outline: none;
+}
+/* 右侧栏手柄贴在栏的左边缘（栏本身仍是一个网格列，不额外占位） */
+.nx-resizer.is-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  width: 8px;
+  flex: none;
+  z-index: 5;
+}
+.nx-shell.is-resizing {
+  cursor: col-resize;
+}
+.nx-shell.is-resizing .nx-sidebar,
+.nx-shell.is-resizing .nx-main {
+  user-select: none;
+}
+@media (max-width: 700px) {
+  .nx-resizer {
+    display: none;
+  }
+}
+/* ---- 农事任务闭环：状态、记录与页面内提醒 ---- */
+.nx-task-state {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.nx-badge.is-open {
+  background: #eaf3df;
+  color: #4f7a33;
+}
+.nx-badge.is-draft {
+  background: #f4f0e1;
+  color: #6a5a1d;
+}
+.nx-badge.is-review {
+  background: #e6eef5;
+  color: #3f6785;
+}
+.nx-badge.is-done {
+  background: #eef1ee;
+  color: #4c5f4b;
+}
+.nx-badge.is-cancelled {
+  background: #f2eeee;
+  color: #5d5954;
+}
+.nx-task-row.is-completed .nx-task-title {
+  color: #5f6f5a;
+}
+.nx-task-row.is-cancelled {
+  opacity: 0.72;
+}
+.nx-task-row.is-cancelled .nx-task-title {
+  text-decoration: line-through;
+  color: #6a7566;
+}
+.nx-task-evidence {
+  margin-top: 9px;
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: #5a6a4e;
+  overflow-wrap: anywhere;
+}
+.nx-task-evidence a {
+  color: #4c7040;
+  text-decoration: none;
+  border-bottom: 1px solid #cddcc0;
+  margin-right: 10px;
+}
+.nx-task-evidence a:hover {
+  color: #2b5326;
+  border-bottom-color: #8aa877;
+}
+.nx-task-evidence span {
+  margin-right: 10px;
+}
+.nx-task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 13px;
+}
+.nx-task-records-toggle {
+  margin-top: 11px;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: #5b7a45;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+.nx-task-records-toggle:hover {
+  text-decoration: underline;
+}
+.nx-task-records {
+  list-style: none;
+  margin: 9px 0 0;
+  padding: 0 0 0 11px;
+  border-left: 2px solid #dfe8d5;
+  display: grid;
+  gap: 10px;
+}
+.nx-task-records li {
+  font-size: 12px;
+  color: #4a5a44;
+}
+.nx-task-records b {
+  font-weight: 600;
+  color: #3d6030;
+  margin-right: 8px;
+}
+.nx-task-records time {
+  color: #5f6d54;
+  margin-right: 8px;
+  font-size: 11.5px;
+}
+.nx-task-records p {
+  margin-top: 4px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #57674f;
+}
+.nx-record-task {
+  font-size: 12px;
+  font-weight: 600;
+  color: #3d6030;
+  margin-bottom: 2px;
+}
+.nx-reminders {
+  border: 1px solid #e4dfcc;
+  background: #fbfaf3;
+  border-radius: 10px;
+  padding: 15px 17px;
+  margin: 18px 0 6px;
+}
+.nx-reminders > b {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #6b5820;
+}
+.nx-reminders ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.nx-reminders button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 11.5px;
+  color: #6f6132;
+  text-align: left;
+  line-height: 1.7;
+}
+.nx-reminders button:hover {
+  text-decoration: underline;
+  color: #4d431f;
+}
+.nx-reminders .nx-fine {
+  margin-top: 9px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+/* 手机访问：标出推荐地址，虚拟网卡置灰（手机扫了也连不上） */
+.nx-mobile-item.is-recommended {
+  border-color: #b9d3a4;
+  background: #f7fbf3;
+}
+.nx-mobile-item.is-virtual {
+  opacity: 0.6;
+}
+.nx-mobile-item.is-virtual svg[aria-label] {
+  filter: grayscale(1);
+}
+.nx-mobile-tag {
+  margin-left: 8px;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: #e4f0d8;
+  color: #4c6b39;
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+/* 手机访问：远程（Tailscale）条目单独高亮 */
+.nx-mobile-item.is-remote {
+  border-color: #9dc3e6;
+  background: #f4f9fe;
+}
+.nx-mobile-tag.is-remote {
+  background: #dceafa;
+  color: #2f5d86;
+}

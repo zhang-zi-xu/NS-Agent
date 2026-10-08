@@ -1,0 +1,222 @@
+/* 任务页：先按田块分组，组内按时间排 */
+.nx-task-list {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.nx-task-group {
+  border: 1px solid #dfe8d7;
+  border-radius: 11px;
+  background: #fff;
+  overflow: hidden;
+}
+.nx-task-group + .nx-task-group {
+  margin-top: 14px;
+}
+.nx-task-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  background: #f4f8ef;
+  border-bottom: 1px solid #e6eee0;
+}
+.nx-task-group-head > div {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-width: 0;
+}
+.nx-task-group-head b {
+  font-size: 15px;
+  color: #33502c;
+}
+.nx-task-group-head span {
+  font-size: 12px;
+  color: #7f9070;
+}
+.nx-task-group .nx-task-row {
+  padding: 16px 18px;
+}
+.nx-task-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 2px;
+}
+.nx-task-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #eef4e7;
+  color: #5b7a45;
+  font-size: 12px;
+  font-weight: 600;
+}
+/* 任务页：导出《本季农事规划报告》入口（按当前所选田块） */
+.nx-task-report {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  border: 1px solid #dfe8d7;
+  border-radius: 9px;
+  background: #fbfdf9;
+}
+.nx-task-report .nx-muted {
+  flex: 1;
+  min-width: 200px;
+}
+.nx-status.is-hint {
+  color: #8a6a34;
+  margin-bottom: 12px;
+}
+/* 已完成任务的「调整」入口：与「重新打开」并列，但用描边绿表示这是主推的下一步 */
+.nx-task-next {
+  border-color: #9db98c;
+  color: #2f5533;
+  background: #f3f8ee;
+}
+.nx-task-next:hover {
+  background: #e7f1de;
+  border-color: #7fa269;
+}
+/* 生成过程只显示一行：状态 + 上一轮思考的一行预览（正文只在回答完成时出现） */
+.nx-thinking-preview {
+  min-width: 0;
+  max-width: 52ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #9aa896;
+  font-size: 12px;
+}
+/* 作曲区工具行：按钮 + 提示 + 发送键占第一行（发送键始终靠右），说明与开关各占一整行换行显示。
+   之前没有 flex-wrap，说明文字把发送键挤到了中间。 */
+.nx-composer-tools {
+  flex-wrap: wrap;
+}
+.nx-composer-hint {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.nx-send {
+  order: 1;
+}
+.nx-image-guide {
+  order: 2;
+  flex-basis: 100%;
+  margin-left: 0;
+}
+.nx-field-photo-toggle {
+  order: 3;
+  flex-basis: 100%;
+}
+.nx-composer-tools .nx-image-strip {
+  order: 0;
+}
+.nx-field-photo-toggle {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  font-size: 10.5px;
+  color: #5d6f52;
+}
+.nx-field-photo-toggle input {
+  accent-color: #5e8041;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+/* 田块页：田间照片时间轴 */
+.nx-field-photos {
+  margin-top: 16px;
+}
+.nx-field-photos header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.nx-field-photos header b {
+  font-size: 12px;
+  color: #3d6030;
+}
+.nx-field-photos header span {
+  font-size: 10px;
+  color: #8b9a80;
+}
+.nx-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 9px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nx-photo-grid li {
+  position: relative;
+  border: 1px solid #dbe5d1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f2f6ee;
+}
+.nx-photo-grid img {
+  display: block;
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+.nx-photo-grid figcaption {
+  padding: 6px 7px;
+  font-size: 9.5px;
+  line-height: 1.5;
+  color: #5f7052;
+  background: #fff;
+}
+.nx-photo-grid figcaption b {
+  display: block;
+  color: #3d6030;
+  font-size: 10px;
+}
+.nx-photo-grid .nx-photo-note {
+  color: #7b8a70;
+}
+.nx-photo-grid button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #1d2b1dd9;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nx-photo-grid button:hover {
+  background: #8c3b2ad9;
+}
+.nx-photo-large {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 9px;
+  background: #0f1a12;
+}

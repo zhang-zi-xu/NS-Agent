@@ -1,0 +1,92 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: 8080
+  # 限额按实际连接来源计数，不允许环境自动启用转发头重写；可信代理支持需独立配置与验收。
+  forward-headers-strategy: none
+  compression:
+    enabled: true
+
+spring:
+  web:
+    resources:
+      add-mappings: false
+  servlet:
+    multipart:
+      # 图片附件走 multipart；单张上限与 UploadService 的校验保持一致
+      max-file-size: 10MB
+      max-request-size: 12MB
+  application:
+    name: nongxin-agent
+  datasource:
+    url: jdbc:sqlite:./data/nongxin.db
+    driver-class-name: org.sqlite.JDBC
+  # 数据库由 DatabaseInitializationConfiguration 统一初始化：空库建表，旧库先备份迁移。
+  # 不再通过 Boot 的通用 SQL 初始化器直接向所有数据库执行 schema.sql。
+  jackson:
+    default-property-inclusion: non_null
+
+# 日志同时写文件：便于事后核对"模型是否按预期调用工具"，不影响启动方式
+logging:
+  file:
+    name: ./data/nongxin.log
+  logback:
+    rollingpolicy:
+      max-file-size: 5MB
+      max-history: 5
+
+nongxin:
+  kb:
+    # 资料库重建和评估只对管理员开放；少于 20 字符或留空时接口关闭。
+    admin-token: ${NONGXIN_KB_ADMIN_TOKEN:}
+  # 数据文件（jar 内资源）
+  cities-resource: classpath:cities.csv
+  kb-resource: classpath:kb.json
+  # 已核验来源登记（文档 + 原文片段）
+  sources-resource: classpath:knowledge/sources.json
+  relations-resource: classpath:knowledge/relations.json
+  # Agent 循环上限（同 yoked MAX_FC_ROUNDS）
+  agent-max-rounds: 5
+  # 一次问答的整轮时间预算（秒）。一次问答可能包含两次模型调用
+  # （例如方案被依据核查拦下后改用确认卡再问一轮），因此不要设得过小；前端等待上限为 180 秒。
+  agent-max-seconds: 150
+  # 天气服务超时（毫秒）
+  weather-timeout-ms: 8000
+  # 图片附件：原图存磁盘（重编码去 EXIF），库里只登记元数据；
+  # 超过保留期且没有被任何会话引用的会被清理，不把 base64 写进聊天文本字段
+  upload-dir: ${NONGXIN_UPLOAD_DIR:./data/uploads}
+  upload-max-bytes: ${NONGXIN_UPLOAD_MAX_BYTES:8388608}
+  upload-retention-days: ${NONGXIN_UPLOAD_RETENTION_DAYS:7}
+  # RAG 向量检索（可选召回；未配置 key 时仍启用本地词法检索与来源约束图谱）
+  embedding:
+    # mode: remote = 远程 embedding 模型（正式使用）；local = 本地哈希向量（离线兜底/链路自检）
+    mode: ${NONGXIN_EMBEDDING_MODE:remote}
+    endpoint: ${NONGXIN_EMBEDDING_ENDPOINT:https://api.siliconflow.cn/v1/embeddings}
+    model: ${NONGXIN_EMBEDDING_MODEL:BAAI/bge-m3}
+    api-key: ${NONGXIN_EMBEDDING_KEY:}
+    batch-size: 16
+    timeout-ms: 20000
+  # 混合检索融合参数（RRF：score = Σ 1/(k + rank)）
+  retrieval:
+    rrf-k: 60
+    vector-top-k: 12
+    keyword-top-k: 12
+    graph-top-k: 8
+
+  # 服务端演示 Key（面向不懂配置的农户/评委：前端不填 Key 时自动兜底）
+  # 留空则不启用兜底，行为与"用户自带 Key"完全一致
+  chat:
+    default-api-key: ${NONGXIN_CHAT_KEY:}
+    # 演示 Key 仅支持固定预设 deepseek/openai/siliconflow；custom 安全拒绝，不能借用客户端地址。
+    # 用户自带 Key 的 custom 接口不受此限制；关闭 usage 限额也不会放开服务端 custom。
+    default-provider: ${NONGXIN_CHAT_PROVIDER:deepseek}
+    default-model: ${NONGXIN_CHAT_MODEL:deepseek-flash}
+  # 成本护栏：只对"使用服务端 Key"的请求计数，用户自带 Key 不受限
+  usage:
+    enabled: ${NONGXIN_USAGE_LIMIT:true}
+    daily-per-ip: ${NONGXIN_USAGE_PER_IP:30}
+    daily-global: ${NONGXIN_USAGE_GLOBAL:500}
+  # 答案缓存服务尚未接入 ChatController；当前聊天不会因这些配置而复用回答或节省调用。
+  # 接入前必须处理用户归属、天气时效与来源版本，不能直接打开全局复用。
+  cache:
+    enabled: ${NONGXIN_CACHE:false}
+    ttl-hours: ${NONGXIN_CACHE_TTL_HOURS:24}
